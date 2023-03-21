@@ -21,7 +21,7 @@ const createProject = async (projectName, useTS, customPlugins = {}) => {
     projectName += '-ts'
   }
   // Install vcp-electron-builder
-  preset.plugins['vue-cli-plugin-electron-builder'] = {
+  preset.plugins['@matthijsburgh/vue-cli-plugin-electron-builder'] = {
     // electron-builder requires that an exact version of electron is provided,
     // unless electron is already installed
     version: 'file:' + process.cwd(),
@@ -65,7 +65,7 @@ const createProject = async (projectName, useTS, customPlugins = {}) => {
     `import App from './App.vue'
       ${useTS ? 'declare var __static: string' : ''}
       window.BASE_URL = process.env.BASE_URL
-      window.__static = __static 
+      window.__static = __static
       window.vuePath = require.resolve('vue')
       window.mockExternalPath = require.resolve('mockExternal')`
   )

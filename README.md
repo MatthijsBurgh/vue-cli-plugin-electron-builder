@@ -2,9 +2,9 @@
 
 > Easily Build Your Vue.js App For Desktop With Electron
 
-Build status: [![Build status](https://github.com/nklayman/vue-cli-plugin-electron-builder/workflows/Node%20CI/badge.svg)](https://github.com/nklayman/vue-cli-plugin-electron-builder/actions)
+Build status: [![Build status](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/workflows/Node%20CI/badge.svg)](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions)
 
-[![Sponsor](./docs/.vuepress/public/sponsorShield.svg)](https://github.com/sponsors/nklayman)
+[![Sponsor](./docs/.vuepress/public/sponsorShield.svg)](https://github.com/sponsors/MatthijsBurgh)
 
 ## Top Supporters
 
@@ -18,7 +18,7 @@ Open a terminal in the directory of your app created with Vue-CLI 3 or 4 (4 is r
 
 Then, install and invoke the generator of vue-cli-plugin-electron-builder by running:
 
-`vue add electron-builder`
+`vue add @matthijsburgh/electron-builder`
 
 That's It! You're ready to go!
 
@@ -42,7 +42,7 @@ or with NPM:
 
 `npm run electron:build`
 
-To see more documentation, [visit our website](https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html).
+To see more documentation, [visit our website](https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/guide/guide.html).
 
 ## Supporters
 
