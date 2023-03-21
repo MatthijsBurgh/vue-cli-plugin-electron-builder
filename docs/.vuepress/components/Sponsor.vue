@@ -1,6 +1,6 @@
 <template>
   <p class="sponsor">
-    <a href="https://github.com/sponsors/nklayman" target="_blank">
+    <a href="https://github.com/sponsors/MatthijsBurgh" target="_blank">
       <span>Support This Project</span>
       <img alt="Sponsor" src="sponsorShield.svg">
     </a>

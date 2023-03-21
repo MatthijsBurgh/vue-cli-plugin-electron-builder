@@ -29,16 +29,16 @@ module.exports = {
       {
         text: 'v1.x',
         link:
-          'https://github.com/nklayman/vue-cli-plugin-electron-builder/tree/v1'
+          'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/tree/v1'
       },
       {
         text: 'Changelog',
         link:
-          'https://github.com/nklayman/vue-cli-plugin-electron-builder/releases'
+          'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/releases'
       },
       {
         text: 'Sponsor',
-        link: 'https://github.com/sponsors/nklayman'
+        link: 'https://github.com/sponsors/MatthijsBurgh'
       }
     ],
     sidebar: {
@@ -52,7 +52,7 @@ module.exports = {
         'commonIssues'
       ]
     },
-    repo: 'nklayman/vue-cli-plugin-electron-builder',
+    repo: 'MatthijsBurgh/vue-cli-plugin-electron-builder',
     docsDir: 'docs',
     editLinks: true,
     editLinkText: 'Is something wrong or missing? Edit this page on github!'
