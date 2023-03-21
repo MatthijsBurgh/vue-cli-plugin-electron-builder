@@ -19,7 +19,7 @@ const { chainWebpack, getExternals } = require('./lib/webpackConfig')
 const webpackMerge = require('webpack-merge')
 
 module.exports = (api, options) => {
-  // If plugin options are provided in vue.config.js, those will be used. Otherwise it is empty object
+  // If plugin options are provided in vue.config.js, those will be used. Otherwise, it is empty object
   const pluginOptions =
     options.pluginOptions && options.pluginOptions.electronBuilder
       ? options.pluginOptions.electronBuilder
@@ -71,8 +71,8 @@ module.exports = (api, options) => {
       const builder = require('electron-builder')
       const yargs = require('yargs')
       // Import the yargs options from electron-builder
-      const configureBuildCommand = require('electron-builder/out/builder')
-        .configureBuildCommand
+      const configureBuildCommand =
+        require('electron-builder/out/builder').configureBuildCommand
       // Prevent custom args from interfering with electron-builder
       removeArg('--mode', 2, rawArgs)
       removeArg('--dest', 2, rawArgs)
@@ -464,13 +464,10 @@ module.exports = (api, options) => {
             'Not launching electron as debug argument was passed. You must launch electron through your debugger.'
           )
           info(
-            'If you are using Spectron, make sure to set the IS_TEST env variable to true.'
-          )
-          info(
             'Learn more about debugging the main process at https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/guide/testingAndDebugging.html#debugging.'
           )
         } else if (args.headless) {
-          // Log information for spectron
+          // Log information for Playwright
           console.log(`$outputDir=${outputDir}`)
           console.log(`$WEBPACK_DEV_SERVER_URL=${server.url}`)
         } else {
@@ -487,7 +484,7 @@ module.exports = (api, options) => {
             info('Launching Electron...')
           }
 
-          const stdioConfig = [null, null, null]
+          const stdioConfig = ['inherit', 'inherit', 'inherit']
 
           // Use an IPC on Windows for graceful exit
           if (process.platform === 'win32') stdioConfig.push('ipc')
@@ -537,46 +534,6 @@ module.exports = (api, options) => {
       }
     }
   )
-
-  api.registerCommand(
-    'build:electron',
-    {
-      description:
-        '[deprecated, use electron:build instead] build app with electron-builder',
-      usage: 'vue-cli-service build:electron [electron-builder options]',
-      details:
-        'All electron-builder command line options are supported.\n' +
-        'See https://www.electron.build/cli for cli options\n' +
-        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
-    },
-    (args, rawArgs) => {
-      warn('This command is deprecated. Please use electron:build instead.')
-      return api.service.run(
-        'electron:build',
-        { ...args, _: ['First arg is removed', ...args._] },
-        ['First arg is removed', ...rawArgs]
-      )
-    }
-  )
-
-  api.registerCommand(
-    'serve:electron',
-    {
-      description:
-        '[deprecated, use electron:serve instead] serve app and launch electron',
-      usage: 'vue-cli-service serve:electron',
-      details:
-        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
-    },
-    (args, rawArgs) => {
-      warn('This command is deprecated. Please use electron:serve instead.')
-      return api.service.run(
-        'electron:serve',
-        { ...args, _: ['First arg is removed', ...args._] },
-        ['First arg is removed', ...rawArgs]
-      )
-    }
-  )
 }
 
 function bundleMain ({
@@ -594,10 +551,7 @@ function bundleMain ({
   const isBuild = mode === 'build'
   const NODE_ENV = process.env.NODE_ENV
   const config = new Config()
-  config
-    .mode(NODE_ENV)
-    .node.set('__dirname', false)
-    .set('__filename', false)
+  config.mode(NODE_ENV).node.set('__dirname', false).set('__filename', false)
   // Set externals
   config.externals(getExternals(api, pluginOptions))
 
@@ -630,8 +584,7 @@ function bundleMain ({
     }
   })
   // Enable/disable nodeIntegration
-  envVars.ELECTRON_NODE_INTEGRATION =
-    args.headless || pluginOptions.nodeIntegration || false
+  envVars.ELECTRON_NODE_INTEGRATION = !!pluginOptions.nodeIntegration
   config.plugin('env').use(webpack.EnvironmentPlugin, [envVars])
 
   if (args.debug) {
@@ -702,9 +655,7 @@ function bundleMain ({
 }
 
 module.exports.defaultModes = {
-  'build:electron': 'production',
-  'serve:electron': 'development',
   'electron:build': 'production',
   'electron:serve': 'development'
 }
-module.exports.testWithSpectron = require('./lib/testWithSpectron')
+module.exports.testWithPlaywright = require('./lib/testWithPlaywright')

@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, windows-latest]
-        node: [ '14', '16' ]
+        node: [14, 16]
         include:
         - os: windows-latest
           commandPrefix: ''
@@ -27,11 +27,11 @@ jobs:
     - name: yarn install
       run: yarn install
     - name: yarn test
-      run: ${{ matrix.commandPrefix }} yarn test --runInBand --coverage
+      run: ${{ matrix.commandPrefix }} yarn run test:ci
       env:
         CI: true
     - name: Upload coverage to Codecov
-      if: runner.os == 'Linux'
+      if: runner.os == 'Linux' && ${{ matrix.node }} == 16
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

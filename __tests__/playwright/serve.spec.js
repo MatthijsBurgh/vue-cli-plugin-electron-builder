@@ -1,7 +1,10 @@
+const { test } = require('@playwright/test')
 const isWin = process.platform === 'win32'
-jest.setTimeout(isWin ? 60000 : 30000)
+test.setTimeout(20000)
+test.slow(isWin)
 
 const runTests = require('./serve.helper.js').runTests
+
 test('electron:serve', async () => {
   await runTests()
 })

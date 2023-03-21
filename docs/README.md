@@ -21,13 +21,13 @@ footer: MIT Licensed | Copyright © 2023-present Matthijs van der Burgh
   </div>
   <div class="feature">
     <h2>Testing and Debugging Support</h2>
-    <p>VCP Electron Builder provides tools for easy debugging and testing, powered by <a href="https://github.com/electron/spectron" target="_blank">Spectron</a>.</p>
+    <p>VCP Electron Builder provides tools for easy debugging and testing, powered by <a href="https://github.com/microsoft/playwright" target="_blank">Playwright</a>.</p>
   </div>
 </div>
 <div style="text-align:center">
 Build status:
-  <a href="https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions" target="_blank">
-    <img src="https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/workflows/Node%20CI/badge.svg" />
+  <a href="https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml" target="_blank">
+    <img src="https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml/badge.svg" />
   </a>
 </div>
 

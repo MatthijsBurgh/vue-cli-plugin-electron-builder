@@ -1,16 +1,14 @@
 // #region Imports
 const pluginIndex = require('../index.js')
-const testWithSpectron = pluginIndex.testWithSpectron
+const testWithPlaywright = pluginIndex.testWithPlaywright
 const webpack = require('webpack')
 const builder = require('electron-builder')
 const fs = require('fs-extra')
 const path = require('path')
 const execa = require('execa')
-const portfinder = require('portfinder')
-const Application = require('spectron').Application
 const { chainWebpack, getExternals } = require('../lib/webpackConfig')
 const chokidar = require('chokidar')
-const spectron = require('spectron')
+const { _electron: electron } = require('playwright-core')
 // #endregion
 
 // #region Mocks
@@ -58,14 +56,18 @@ fs.readFileSync.mockReturnValue(
     dependencies: {}
   })
 )
-const mockWait = jest.fn().mockResolvedValue()
-const mockStart = jest.fn()
-jest.mock('spectron', () => ({
-  Application: jest.fn().mockImplementation(() => ({
-    start: mockStart,
-    client: { waitUntilWindowLoaded: mockWait }
-  }))
+const mockFirstWindow = jest.fn().mockResolvedValue()
+const mockElectronApplication = jest.fn().mockImplementation(() => {
+  return { firstWindow: mockFirstWindow }
+})
+jest.mock('playwright-core', () => ({
+  _electron: {
+    launch: jest.fn().mockImplementation(() => {
+      return Promise.resolve(mockElectronApplication())
+    }).mockName('electron.launch')
+  }
 }))
+
 // Prevent console.log statements from index
 console.log = jest.fn()
 beforeEach(() => {
@@ -954,11 +956,8 @@ describe('Custom webpack chain', () => {
   })
 })
 
-describe('testWithSpectron', () => {
-  // Mock portfinder's returned port
-  portfinder.getPortPromise = jest.fn().mockResolvedValue('expectedPort')
-
-  const runSpectron = async (spectronOptions, launchOptions = {}) => {
+describe('testWithPlaywright', () => {
+  const runPlaywright = async (playwrightOptions, launchOptions = {}) => {
     let sendData
     execa.mockReturnValueOnce({
       on: jest.fn(),
@@ -971,7 +970,7 @@ describe('testWithSpectron', () => {
         }
       }
     })
-    const testPromise = testWithSpectron(spectron, spectronOptions)
+    const testPromise = testWithPlaywright(playwrightOptions)
     // Mock console.log from electron:serve
     if (launchOptions.customLog) await sendData(launchOptions.customLog)
     await sendData(`$outputDir=${launchOptions.outputDir || 'dist_electron'}`)
@@ -982,7 +981,7 @@ describe('testWithSpectron', () => {
   }
 
   test('uses custom output dir and url', async () => {
-    const { url } = await runSpectron(
+    const { url } = await runPlaywright(
       {},
       {
         url: 'http://localhost:1234/',
@@ -991,59 +990,47 @@ describe('testWithSpectron', () => {
     )
     // Proper URL is returned
     expect(url).toBe('http://localhost:1234/')
-    const appArgs = Application.mock.calls[0][0]
-    // Spectron is launched with proper path to output dir
-    expect(appArgs.args).toEqual(['customOutput'])
+    const appArgs = electron.launch.mock.calls[0][0]
+    // Playwright is launched with proper path to output dir
+    expect(appArgs.args).toEqual([path.join('customOutput', 'index.js')])
   })
 
-  test('secures an open port with portfinder', async () => {
-    await runSpectron()
-    // Port should match portfinder's mock return value
-    expect(Application.mock.calls[0][0].port).toBe('expectedPort')
+  test("doesn't launch playwright if noPlaywright option is provided", async () => {
+    await runPlaywright({ noPlaywright: true })
+    // Playwright instance should not be created
+    expect(electron.launch).not.toBeCalled()
+    expect(mockFirstWindow).not.toBeCalled()
   })
 
-  test("doesn't start app if noStart option is provided", async () => {
-    await runSpectron({ noStart: true })
-    // App should not be started nor waited for to load
-    expect(mockStart).not.toBeCalled()
-    expect(mockWait).not.toBeCalled()
-  })
-
-  test("doesn't launch spectron if noSpectron option is provided", async () => {
-    await runSpectron({ noSpectron: true })
-    // Spectron instance should not be created
-    expect(Application).not.toBeCalled()
-  })
-
-  test('uses custom spectron options if provided', async () => {
-    await runSpectron({ spectronOptions: { testKey: 'expected' } })
-    // Custom spectron option is passed through
-    expect(Application.mock.calls[0][0].testKey).toBe('expected')
+  test('uses custom playwright options if provided', async () => {
+    await runPlaywright({ launchOptions: { testKey: 'expected' } })
+    // Custom playwright option is passed through
+    expect(electron.launch.mock.calls[0][0].testKey).toBe('expected')
   })
 
   test('launches dev server in production mode if forceDev argument is not provided', async () => {
-    await runSpectron()
+    await runPlaywright()
 
     // Node env was set to production
     expect(execa.mock.calls[0][2].env.NODE_ENV).toBe('production')
   })
 
   test('launches dev server in dev mode if forceDev argument is provided', async () => {
-    await runSpectron({ forceDev: true })
+    await runPlaywright({ forceDev: true })
 
     // Node env was set to development
     expect(execa.mock.calls[0][2].env.NODE_ENV).toBe('development')
   })
 
   test('default vue mode is test', async () => {
-    await runSpectron()
+    await runPlaywright()
 
     // Mode argument was set to test
     expect(execa.mock.calls[0][1].join(' ').indexOf('--mode test')).not.toBe(-1)
   })
 
   test('custom vue mode is used if provided', async () => {
-    await runSpectron({ mode: 'expected' })
+    await runPlaywright({ mode: 'expected' })
 
     // Mode argument was set to expected
     expect(
@@ -1052,7 +1039,7 @@ describe('testWithSpectron', () => {
   })
 
   test('returns stdout of command', async () => {
-    const { stdout } = await runSpectron({}, { customLog: 'shouldBeInLog' })
+    const { stdout } = await runPlaywright({}, { customLog: 'shouldBeInLog' })
     // Mock stdout is included
     expect(stdout.indexOf('shouldBeInLog')).not.toBe(-1)
   })
