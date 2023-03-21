@@ -63,7 +63,7 @@ module.exports = (api, options) => {
       details:
         'All electron-builder command line options are supported.\n' +
         'See https://www.electron.build/cli for cli options\n' +
-        'See https://nklayman.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
+        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
     },
     async (args, rawArgs) => {
       // Use custom config for webpack
@@ -274,7 +274,7 @@ module.exports = (api, options) => {
       description: 'serve app and launch electron',
       usage: 'vue-cli-service serve:electron',
       details:
-        'See https://nklayman.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
+        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
     },
     async (args, rawArgs) => {
       // Use custom config for webpack
@@ -467,7 +467,7 @@ module.exports = (api, options) => {
             'If you are using Spectron, make sure to set the IS_TEST env variable to true.'
           )
           info(
-            'Learn more about debugging the main process at https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/testingAndDebugging.html#debugging.'
+            'Learn more about debugging the main process at https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/guide/testingAndDebugging.html#debugging.'
           )
         } else if (args.headless) {
           // Log information for spectron
@@ -547,7 +547,7 @@ module.exports = (api, options) => {
       details:
         'All electron-builder command line options are supported.\n' +
         'See https://www.electron.build/cli for cli options\n' +
-        'See https://nklayman.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
+        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
     },
     (args, rawArgs) => {
       warn('This command is deprecated. Please use electron:build instead.')
@@ -566,7 +566,7 @@ module.exports = (api, options) => {
         '[deprecated, use electron:serve instead] serve app and launch electron',
       usage: 'vue-cli-service serve:electron',
       details:
-        'See https://nklayman.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
+        'See https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/ for more details about this plugin.'
     },
     (args, rawArgs) => {
       warn('This command is deprecated. Please use electron:serve instead.')

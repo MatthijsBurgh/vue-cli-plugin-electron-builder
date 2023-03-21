@@ -39,7 +39,7 @@ vue-cli-plugin-electron-builder exports a `testWithSpectron` function. This func
  * @jest-environment node
  */
 const spectron = require('spectron')
-const { testWithSpectron } = require('vue-cli-plugin-electron-builder')
+const { testWithSpectron } = require('@matthijsburgh/vue-cli-plugin-electron-builder')
 jest.setTimeout(50000)
 
 test('a window is created', async () => {
@@ -56,13 +56,13 @@ test('a window is created', async () => {
 })
 ```
 
-Complete examples are available for [jest](https://github.com/nklayman/vue-cli-plugin-electron-builder/blob/master/generator/templates/tests-jest/tests/unit/electron.spec.js) and [mocha](https://github.com/nklayman/vue-cli-plugin-electron-builder/blob/master/generator/templates/tests-mocha/tests/unit/electron.spec.js). They will be automatically added with this plugin if you have jest or mocha already installed in your project.
+Complete examples are available for [jest](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/blob/master/generator/templates/tests-jest/tests/unit/electron.spec.js) and [mocha](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/blob/master/generator/templates/tests-mocha/tests/unit/electron.spec.js). They will be automatically added with this plugin if you have jest or mocha already installed in your project.
 
 `testWithSpectron` takes a config argument. That config argument has properties as defined:
 
 ```javascript
 const spectron = require('spectron')
-const { testWithSpectron } = require('vue-cli-plugin-electron-builder')
+const { testWithSpectron } = require('@matthijsburgh/vue-cli-plugin-electron-builder')
 
 testWithSpectron(
   // Import of spectron, only required for v2.0+

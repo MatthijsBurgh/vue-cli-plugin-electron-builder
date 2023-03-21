@@ -33,7 +33,7 @@ const deploy = async () => {
     [
       'push',
       '-f',
-      'https://github.com/nklayman/vue-cli-plugin-electron-builder.git',
+      'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder.git',
       'master:gh-pages'
     ],
     {

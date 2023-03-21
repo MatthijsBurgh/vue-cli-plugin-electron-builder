@@ -95,7 +95,7 @@ const win = new BrowserWindow({
   height: 600,
   webPreferences: {
     // Use pluginOptions.nodeIntegration, leave this alone
-    // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#node-integration for more info
+    // See MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#node-integration for more info
     nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
 +   preload: path.join(__dirname, 'preload.js')
   }

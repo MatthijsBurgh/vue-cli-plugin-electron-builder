@@ -1,4 +1,4 @@
-import testWithSpectron from 'vue-cli-plugin-electron-builder/lib/testWithSpectron'
+import testWithSpectron from '@matthijsburgh/vue-cli-plugin-electron-builder/lib/testWithSpectron'
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 // eslint-disable-next-line no-undef

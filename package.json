@@ -1,11 +1,11 @@
 {
-  "name": "vue-cli-plugin-electron-builder",
+  "name": "@matthijsburgh/vue-cli-plugin-electron-builder",
   "version": "2.1.1",
   "description": "Easily Build Your Vue.js App For Desktop With Electron",
   "main": "index.js",
   "types": "index.d.ts",
-  "homepage": "https://nklayman.github.io/vue-cli-plugin-electron-builder/",
-  "funding": "https://github.com/sponsors/nklayman",
+  "homepage": "https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/",
+  "funding": "https://github.com/sponsors/MatthijsBurgh",
   "scripts": {
     "test": "jest",
     "pretest": "rimraf __tests__/projects/*",
@@ -24,8 +24,17 @@
     "electron-builder",
     "electron-webpack"
   ],
-  "repository": "https://github.com/nklayman/vue-cli-plugin-electron-builder.git",
-  "author": "Noah Klayman <noahklayman@gmail.com>",
+  "repository": "https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder.git",
+  "author": {
+    "name" : "Noah Klayman",
+    "email" : "noahklayman@gmail.com"
+  },
+  "author": [
+    {
+      "name" : "Matthijs van der Burgh",
+      "email" : "MatthijsBurgh@outlook.com"
+    }
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {

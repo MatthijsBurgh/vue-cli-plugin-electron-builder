@@ -4,7 +4,7 @@ module.exports = (api) => {
   api.describeTask({
     match: /vue-cli-service electron:build/,
     description: 'Build your app for production with electron-builder',
-    link: 'https://nklayman.github.io/vue-cli-plugin-electron-builder/',
+    link: 'https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/',
     prompts,
     onBeforeRun: ({ answers, args }) => {
       // Args
@@ -39,7 +39,7 @@ module.exports = (api) => {
   api.describeTask({
     match: /vue-cli-service electron:serve/,
     description: 'Serve your app, launch electron',
-    link: 'https://nklayman.github.io/vue-cli-plugin-electron-builder/',
+    link: 'https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/',
     prompts: [
       {
         name: 'noSandbox',
