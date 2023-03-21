@@ -1,4 +1,4 @@
-import { testWithPlaywright } from 'vue-cli-plugin-electron-builder'
+import { testWithPlaywright } from '@matthijsburgh/vue-cli-plugin-electron-builder'
 import { expect, test } from '@playwright/test'
 test.setTimeout(60000)
 
