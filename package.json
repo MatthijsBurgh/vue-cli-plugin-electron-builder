@@ -1,6 +1,6 @@
 {
   "name": "@matthijsburgh/vue-cli-plugin-electron-builder",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Easily Build Your Vue.js App For Desktop With Electron",
   "main": "index.js",
   "types": "index.d.ts",
@@ -25,14 +25,10 @@
     "electron-webpack"
   ],
   "repository": "https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder.git",
-  "author": {
-    "name" : "Noah Klayman",
-    "email" : "noahklayman@gmail.com"
-  },
   "author": [
     {
-      "name" : "Matthijs van der Burgh",
-      "email" : "MatthijsBurgh@outlook.com"
+      "name": "Matthijs van der Burgh",
+      "email": "MatthijsBurgh@outlook.com"
     }
   ],
   "license": "MIT",
