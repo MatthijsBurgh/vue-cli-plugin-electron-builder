@@ -12,7 +12,7 @@
     "test:playwright": "cross-env env NODE_OPTIONS=--openssl-legacy-provider playwright test",
     "test": "yarn run test:jest && yarn run test:playwright",
     "pretest:ci": "yarn run pretest",
-    "pretest": "rimraf __tests__/projects/*",
+    "pretest": "rimraf --glob __tests__/projects/*",
     "lint": "eslint .",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
