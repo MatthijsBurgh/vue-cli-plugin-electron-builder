@@ -45,7 +45,7 @@
     "electron-builder": "^23.0.3",
     "execa": "^5.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.1.1",
     "lodash.merge": "^4.6.1",
     "pumpify": "^2.0.1",
     "semver": "^7.3.2",
