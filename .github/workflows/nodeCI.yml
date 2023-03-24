@@ -42,10 +42,10 @@ jobs:
           ${{ matrix.os }}-yarn-node-
     - name: yarn install
       run: yarn install
+    - name: yarn lint
+      run: yarn lint
     - name: yarn test
       run: ${{ matrix.commandPrefix }} yarn run test:ci
-      env:
-        CI: true
     - name: Upload coverage to Codecov
       if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18}}
       uses: codecov/codecov-action@v3

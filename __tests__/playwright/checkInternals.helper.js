@@ -8,9 +8,10 @@ module.exports = async ({ app, projectPath, projectName, mode }) => {
   const outputPath = projectPath(
     `dist_electron/${isWin ? 'win' : 'linux'}-unpacked/resources/app.asar`
   )
-  const [window_static,window_vuePath,window_mockExternalPath,window_BASE_URL] = await ipcMainInvokeHandler(app, 'get-renderer-data')
-
-  const [main_static,main_mockExternalPath] = await ipcMainInvokeHandler(app, 'get-main-data')
+  // eslint-disable-next-line camelcase
+  const [window_static, window_vuePath, window_mockExternalPath, window_BASE_URL] = await ipcMainInvokeHandler(app, 'get-renderer-data')
+  // eslint-disable-next-line camelcase
+  const [main_static, main_mockExternalPath] = await ipcMainInvokeHandler(app, 'get-main-data')
 
   // Base url should be root of server or packaged asar
   expect(window_BASE_URL).toBe(isBuild ? 'app://./' : '/' /* Server root */)
