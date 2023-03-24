@@ -13,5 +13,6 @@ module.exports = {
     'generator/index.js',
     'lib/testWithPlaywright.helper.js',
     'lib/webpackConfig.js'
-  ]
+  ],
+  reporters: process.env.CI ? [['github-actions', { silent: false }], 'summary'] : ['default']
 }
