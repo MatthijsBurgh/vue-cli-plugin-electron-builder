@@ -146,7 +146,7 @@ send_data(getData())`
   )
   appPkg.dependencies.mockExternal = 'mockExternal'
   // Enable nodeIntegration and add preload file
-  appPkg.vue.pluginOptions = { electronBuilder: { nodeIntegration: true, preload: path.join('src', `preload.${useTS ? 'ts' : 'js'}`)} }
+  appPkg.vue.pluginOptions = { electronBuilder: { nodeIntegration: true, preload: path.join('src', `preload.${useTS ? 'ts' : 'js'}`) } }
   fs.writeFileSync(projectPath('package.json'), JSON.stringify(appPkg, null, 2))
 
   return { project, projectName }
