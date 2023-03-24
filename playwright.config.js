@@ -1,7 +1,8 @@
-const config = {
-  testDir: './__tests__/playwright/',
-  testMatch: ['**/*.spec.js'],
-  maxFailures: 2
-}
+import { defineConfig } from '@playwright/test'
 
-export default config
+export default defineConfig({
+  maxFailures: 2,
+  reporter: process.env.CI ? 'github' : 'list',
+  testDir: './__tests__/playwright/',
+  testMatch: ['**/*.spec.js']
+})
