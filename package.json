@@ -14,9 +14,9 @@
     "pretest:ci": "yarn run pretest",
     "pretest": "rimraf --glob __tests__/projects/*",
     "lint": "eslint .",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "node ./deployDocs.js"
+    "docs:dev": "cross-env env NODE_OPTIONS=--openssl-legacy-provider vuepress dev docs",
+    "docs:build": "cross-env env NODE_OPTIONS=--openssl-legacy-provider vuepress build docs",
+    "docs:deploy": "cross-env env NODE_OPTIONS=--openssl-legacy-provider node ./deployDocs.js"
   },
   "keywords": [
     "electron",
