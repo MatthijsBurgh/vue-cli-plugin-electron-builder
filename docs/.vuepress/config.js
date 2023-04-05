@@ -32,6 +32,11 @@ module.exports = {
           'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/tree/v1'
       },
       {
+        text: 'v2.x',
+        link:
+          'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/tree/v2'
+      },
+      {
         text: 'Changelog',
         link:
           'https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/releases'
