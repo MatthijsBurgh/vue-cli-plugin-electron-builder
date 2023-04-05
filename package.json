@@ -8,15 +8,15 @@
   "funding": "https://github.com/sponsors/MatthijsBurgh",
   "scripts": {
     "test:ci": "yarn run test:jest --runInBand --coverage && yarn run test:playwright",
-    "test:jest": "cross-env env NODE_OPTIONS=--openssl-legacy-provider jest",
-    "test:playwright": "cross-env env NODE_OPTIONS=--openssl-legacy-provider playwright test",
+    "test:jest": "jest",
+    "test:playwright": "playwright test",
     "test": "yarn run test:jest && yarn run test:playwright",
     "pretest:ci": "yarn run pretest",
     "pretest": "rimraf --glob __tests__/projects/*",
     "lint": "eslint .",
-    "docs:dev": "cross-env env NODE_OPTIONS=--openssl-legacy-provider vuepress dev docs",
-    "docs:build": "cross-env env NODE_OPTIONS=--openssl-legacy-provider vuepress build docs",
-    "docs:deploy": "cross-env env NODE_OPTIONS=--openssl-legacy-provider node ./deployDocs.js"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "node ./deployDocs.js"
   },
   "keywords": [
     "electron",
