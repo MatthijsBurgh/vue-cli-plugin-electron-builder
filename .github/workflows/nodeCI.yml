@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, ubuntu-latest, windows-latest]
-        node: [18]
+        node: [16]
         include:
         - os: windows-latest
           commandPrefix: ''
