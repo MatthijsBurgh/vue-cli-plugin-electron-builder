@@ -41,7 +41,11 @@ jobs:
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
     - name: yarn install
-      run: yarn install
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        command: yarn install
     - name: yarn lint
       run: yarn lint
     - name: yarn test
