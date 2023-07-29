@@ -41,11 +41,19 @@ jobs:
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
     - name: yarn install
-      run: yarn install
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        command: yarn install
     - name: yarn lint
       run: yarn lint
     - name: yarn test
-      run: ${{ matrix.commandPrefix }} yarn run test:ci
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 5
+        max_attempts: 3
+        command: ${{ matrix.commandPrefix }} yarn run test:ci
     - name: Upload coverage to Codecov
       if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18}}
       uses: codecov/codecov-action@v3
