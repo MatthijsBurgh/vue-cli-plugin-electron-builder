@@ -1,6 +1,6 @@
 {
   "isMock": true,
   "devDependencies": {
-    "electron": "^13.0.0"
+    "electron": "^23.0.0"
   }
 }

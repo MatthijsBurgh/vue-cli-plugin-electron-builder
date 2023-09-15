@@ -4,7 +4,7 @@ sidebarDepth: 2
 ---
 
 :::warning
-These are the docs for the v2.x.x release line, which is recommended over the v1.x version. The old docs are available [here](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/tree/v1/docs). To upgrade, see the [release announcement](https://github.com/nklayman/vue-cli-plugin-electron-builder/releases/tag/v2.0.0).
+These are the docs for the v3.x.x release line, which is recommended over the v2.x version. The old docs are available [here](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/tree/v2/docs). To upgrade, see the [release announcement](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/releases/tag/v3.0.0).
 :::
 
 # Quick Start
