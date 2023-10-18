@@ -24,7 +24,7 @@ beforeEach(() => {
     if (path === 'apiResolve_./package.json') {
       return JSON.stringify({
         scripts: {},
-        devDependencies: { electron: '^5.0.0' }
+        devDependencies: { electron: '^27.0.0' }
       })
     }
     // return mock content
@@ -34,7 +34,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 const runGenerator = () =>
-  generator(mockApi, { electronBuilder: { electronVersion: '^9.0.0' } })
+  generator(mockApi, { electronBuilder: { electronVersion: '^27.0.0' } })
 
 describe('.gitignore', () => {
   test('extends gitignore if it exists', () => {
@@ -80,7 +80,7 @@ describe('.gitignore', () => {
         if (path === 'apiResolve_./package.json') {
           return JSON.stringify({
             scripts: {},
-            devDependencies: { electron: '^5.0.0' }
+            devDependencies: { electron: '^27.0.0' }
           })
         }
         // return mock content
