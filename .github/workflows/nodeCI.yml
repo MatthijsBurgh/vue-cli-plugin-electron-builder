@@ -55,7 +55,7 @@ jobs:
         max_attempts: 3
         command: ${{ matrix.commandPrefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18}}
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16}}
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
