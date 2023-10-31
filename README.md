@@ -2,7 +2,7 @@
 
 > Easily Build Your Vue.js App For Desktop With Electron
 
-[![Build status](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/workflows/Node%20CI/badge.svg)](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions)
+[![Node CI](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml/badge.svg)](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml)
 
 [![codecov](https://codecov.io/gh/MatthijsBurgh/vue-cli-plugin-electron-builder/branch/master/graph/badge.svg?token=V6OJ28JU6K)](https://codecov.io/gh/MatthijsBurgh/vue-cli-plugin-electron-builder)
 
