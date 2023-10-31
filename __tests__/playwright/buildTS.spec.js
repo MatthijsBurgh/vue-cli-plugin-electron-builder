@@ -1,7 +1,7 @@
 const { test } = require('@playwright/test')
-const isWin = process.platform === 'win32'
+const { isCI } = require('ci-info')
 test.setTimeout(30000)
-test.slow(isWin)
+test.slow(isCI)
 
 const runTests = require('./build.helper.js').runTests
 
