@@ -1,5 +1,5 @@
-const isWin = process.platform === 'win32'
-jest.setTimeout(isWin ? 30000 : 15000)
+const { isCI } = require('ci-info')
+jest.setTimeout(isCI ? 30000 : 15000)
 
 const createPlaywrightProject = require('./testWithPlaywright.helper.js')
 
