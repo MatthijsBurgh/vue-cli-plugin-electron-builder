@@ -6470,9 +6470,9 @@ electron-devtools-installer@^3.1.0:
     unzip-crx-3 "^0.2.0"
 
 electron-playwright-helpers@^1.5.5:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/electron-playwright-helpers/-/electron-playwright-helpers-1.6.0.tgz#74d17d3e1a4f738afc51e93c0912d2e1e16d496a"
-  integrity sha512-0csyp77xRAi8m5g1ApcYdTMJ8n0+Geyb4huyMAsIYTInk4wsuUTHmIy2gMfgF3I130ogfpX6ZfEGeffS93FaUA==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/electron-playwright-helpers/-/electron-playwright-helpers-1.7.0.tgz#ec28cd025b76fd755e25120bdc6ea2d5c25fa5e4"
+  integrity sha512-N/i/VYmZoNcuqJoL+HnZqpA1nDTsbhHpMIcu6AP6oJF7wUow1b/ooAadpbxnh67AuT5sbmqYBYGWD8GqlPo7bQ==
   dependencies:
     "@electron/asar" "^3.2.4"
 
