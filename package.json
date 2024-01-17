@@ -62,7 +62,7 @@
     "@babel/core": "^7.11.0",
     "@babel/eslint-parser": "^7.19.1",
     "@electron/remote": "^2.0.1",
-    "@vue/cli": "^4.0.0",
+    "@vue/cli": "^5.0.8",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^5.0.0",
     "@vue/cli-plugin-typescript": "^4.0.0",
