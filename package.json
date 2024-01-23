@@ -49,7 +49,7 @@
     "lodash.merge": "^4.6.1",
     "pumpify": "^2.0.1",
     "split2": "^4.1.0",
-    "terser-webpack-plugin": "^4.2.3",
+    "terser-webpack-plugin": "^5.3.10",
     "through2-filter": "^3.0.0",
     "through2-map": "^3.0.0",
     "unzip-crx": "^0.2.0",
