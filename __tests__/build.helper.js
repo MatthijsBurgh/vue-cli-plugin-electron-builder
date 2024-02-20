@@ -1,7 +1,7 @@
 const create = require('./createProject.helper.js')
 
-const runTests = async (useTS) => {
-  const { project, projectName } = await create('build', useTS)
+const runTests = async (useTS, electronVersion = '29.0.0') => {
+  const { project, projectName } = await create('build', useTS, {}, electronVersion)
 
   const isWin = process.platform === 'win32'
 

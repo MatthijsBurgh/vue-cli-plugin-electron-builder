@@ -6,7 +6,7 @@ const fs = require('fs-extra')
 // Prevent electron-builder from installing app deps
 jest.mock('electron-builder/out/cli/install-app-deps.js')
 
-const createProject = async (projectName, useTS, customPlugins = {}) => {
+const createProject = async (projectName, useTS, customPlugins = {}, electronVersion = '29.0.0') => {
   // Prevent modification of import
   const preset = {
     ...defaultPreset,
@@ -25,7 +25,7 @@ const createProject = async (projectName, useTS, customPlugins = {}) => {
     // electron-builder requires that an exact version of electron is provided,
     // unless electron is already installed
     version: 'file:' + process.cwd(),
-    electronBuilder: { electronVersion: '29.0.0', addTests: true }
+    electronBuilder: { electronVersion: electronVersion, addTests: true }
   }
   preset.plugins = { ...preset.plugins, ...customPlugins }
   const projectPath = (p) =>

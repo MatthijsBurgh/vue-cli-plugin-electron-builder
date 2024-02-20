@@ -5,7 +5,7 @@ const path = require('path')
 const getProject = require('./getProject.helper.js')
 const checkInternals = require('./checkInternals.helper')
 
-const runTests = async (useTS) => {
+const runTests = async (useTSs) => {
   const projectName = useTS ? 'build-ts' : 'build'
 
   const projectPath = (p) =>

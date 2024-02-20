@@ -2,11 +2,12 @@ const createProject = require('./createProject.helper.js')
 // const execa = require('execa')
 // const path = require('path')
 
-module.exports = async () => {
+module.exports = async (electronVersion = '29.0.0') => {
   const plugins = {}
   await createProject(
     'playwright',
     false,
-    plugins
+    plugins,
+    electronVersion
   )
 }

@@ -34,8 +34,8 @@ const serve = (project, notifyUpdate) =>
       }
     })
   })
-const runTests = async (useTS) => {
-  const { project } = await create('serve', useTS)
+const runTests = async (useTS, electronVersion = '29.0.0') => {
+  const { project } = await create('serve', useTS, {}, electronVersion)
 
   // Wait for dev server to start
   const { stopServe } = await serve(project)
