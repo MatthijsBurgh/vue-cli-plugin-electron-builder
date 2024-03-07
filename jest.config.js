@@ -1,3 +1,6 @@
+const { GITHUB_ACTIONS } = require('ci-info')
+
+/** @type {import('jest').Config} */
 module.exports = {
   testEnvironment: 'node',
   setupFiles: ['<rootDir>/__tests__/setup.helper.js'],
@@ -14,5 +17,5 @@ module.exports = {
     'lib/testWithPlaywright.helper.js',
     'lib/webpackConfig.js'
   ],
-  reporters: process.env.CI ? [['github-actions', { silent: false }], 'summary'] : ['default']
+  reporters: GITHUB_ACTIONS ? [['github-actions', { silent: false }], 'summary'] : ['default']
 }
