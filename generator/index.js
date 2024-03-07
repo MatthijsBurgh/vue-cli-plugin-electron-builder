@@ -101,7 +101,7 @@ module.exports = (api, options = {}) => {
   if (options.electronBuilder.addTests) {
     addScript('test', 'playwright test')
     devDependencies['@playwright/test'] = '^1.41.0'
-    devDependencies['playwright-core'] = '^1.41s.0'
+    devDependencies['playwright-core'] = '^1.41.0'
   }
   api.extendPackage({
     scripts,
