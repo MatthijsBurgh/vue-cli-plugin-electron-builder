@@ -13011,19 +13011,19 @@ read-pkg@^5.1.1:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
-  integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
+readable-stream@3, readable-stream@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.2.tgz#56a9b36ea965c00c5a93ef31eb111a0f11056967"
+  integrity sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
-readable-stream@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.2.tgz#56a9b36ea965c00c5a93ef31eb111a0f11056967"
-  integrity sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==
+readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
+  integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -14708,12 +14708,11 @@ through2-filter@^3.0.0:
     xtend "~4.0.0"
 
 through2-map@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/through2-map/-/through2-map-3.0.0.tgz#a6c3026ce63b4898a997d540506b66ffd970f271"
-  integrity sha1-psMCbOY7SJipl9VAUGtm/9lw8nE=
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/through2-map/-/through2-map-3.1.0.tgz#af8905db16593dc39f9b7db44326dded0f739c3c"
+  integrity sha512-DLIkZZJEeuxna8sh3CAi6q9i6CzmDxjUFM4snoMCGXdR+yybspuNgalZJ9DthcDU9jqnbpq3PQs22a5Q7km0/Q==
   dependencies:
-    through2 "~2.0.0"
-    xtend "^4.0.0"
+    through2 "^4.0.2"
 
 through2@^2.0.0, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0:
   version "2.0.5"
@@ -14722,6 +14721,13 @@ through2@^2.0.0, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0:
   dependencies:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
+
+through2@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-4.0.2.tgz#a7ce3ac2a7a8b0b966c80e7c49f0484c3b239764"
+  integrity sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==
+  dependencies:
+    readable-stream "3"
 
 through@^2.3.6, through@^2.3.8, through@~2.3.4:
   version "2.3.8"
