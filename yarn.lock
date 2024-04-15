@@ -14707,12 +14707,11 @@ through2-filter@^3.0.0:
     through2 "^4.0.2"
 
 through2-map@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/through2-map/-/through2-map-3.0.0.tgz#a6c3026ce63b4898a997d540506b66ffd970f271"
-  integrity sha1-psMCbOY7SJipl9VAUGtm/9lw8nE=
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/through2-map/-/through2-map-3.1.0.tgz#af8905db16593dc39f9b7db44326dded0f739c3c"
+  integrity sha512-DLIkZZJEeuxna8sh3CAi6q9i6CzmDxjUFM4snoMCGXdR+yybspuNgalZJ9DthcDU9jqnbpq3PQs22a5Q7km0/Q==
   dependencies:
-    through2 "~2.0.0"
-    xtend "^4.0.0"
+    through2 "^4.0.2"
 
 through2@^2.0.0, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0:
   version "2.0.5"
