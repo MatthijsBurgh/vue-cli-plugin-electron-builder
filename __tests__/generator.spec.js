@@ -2,6 +2,9 @@ const generator = require('../generator')
 const fs = require('fs')
 jest.mock('fs')
 
+const electronVersion = process.env.ELECTRON_VERSION || 31
+const electronRequirement = `^${electronVersion}.0.0`
+
 // Mock the generator api
 let pkg = {}
 let completionCb
@@ -24,7 +27,7 @@ beforeEach(() => {
     if (path === 'apiResolve_./package.json') {
       return JSON.stringify({
         scripts: {},
-        devDependencies: { electron: '^31.0.0' }
+        devDependencies: { electron: electronRequirement }
       })
     }
     // return mock content
@@ -34,7 +37,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 const runGenerator = () =>
-  generator(mockApi, { electronBuilder: { electronVersion: '^31.0.0' } })
+  generator(mockApi, { electronBuilder: { electronVersion: electronRequirement } })
 
 describe('.gitignore', () => {
   test('extends gitignore if it exists', () => {
@@ -80,7 +83,7 @@ describe('.gitignore', () => {
         if (path === 'apiResolve_./package.json') {
           return JSON.stringify({
             scripts: {},
-            devDependencies: { electron: '^31.0.0' }
+            devDependencies: { electron: electronRequirement }
           })
         }
         // return mock content

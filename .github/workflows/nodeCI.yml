@@ -12,15 +12,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         node: [16]
+        electron_version: [27, 28, 29, 30, 31]
         include:
         - os: windows-latest
-          commandPrefix: ''
-        - os: ubuntu-20.04
-          commandPrefix: xvfb-run
+          node: 16
+          command_prefix: ''
+          electron_version: 31
         - os: ubuntu-latest
-          commandPrefix: xvfb-run
+          command_prefix: xvfb-run
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -39,10 +40,17 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ${{ steps.yarn-cache.outputs.dir }}
-        key: ${{ matrix.os }}-yarn-node-${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
+        key: ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-${{ hashFiles('yarn.lock') }}
         restore-keys: |
+          ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
+    - name: Electron version
+      id: electron-version
+      shell: bash
+      run: |
+        echo "$(jq -M '.devDependencies.electron = "^${{ matrix.electron_version }}.0.0"' -- package.json)" > package.json
+        cat package.json
     - name: yarn install
       uses: nick-fields/retry@v3
       with:
@@ -53,12 +61,14 @@ jobs:
       run: yarn lint
     - name: yarn test
       uses: nick-fields/retry@v3
+      env:
+        ELECTRON_VERSION: ${{ matrix.electron_version }}
       with:
         timeout_minutes: 5
         max_attempts: 3
-        command: ${{ matrix.commandPrefix }} yarn run test:ci
+        command: ${{ matrix.command_prefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16}}
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16 && matrix.electron_version == 31 }}
       uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
