@@ -6667,10 +6667,10 @@ electron-to-chromium@^1.4.668:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.738.tgz#9a7fca98abaee61e20c9c25013d5ce60bb533436"
   integrity sha512-lwKft2CLFztD+vEIpesrOtCrko/TFnEJlHFdRhazU7Y/jx5qc4cqsocfVrBg4So4gGe9lvxnbLIoev47WMpg+A==
 
-electron@^31.2.0:
-  version "31.2.0"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-31.2.0.tgz#f6dc4c42f9118fd0f57b3c04676503df2bf16ece"
-  integrity sha512-5w+kjOsGiTXytPSErBPNp/3znnuEMKc42RD41MqRoQkiYaR8x/Le2+qWk1cL60UwE/67oeKnOHnnol8xEuldGg==
+electron@^31.0.0:
+  version "31.2.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-31.2.1.tgz#cfd7de576520d5c02d7c1f979bac85ad6b26d78d"
+  integrity sha512-g3CLKjl4yuXt6VWm/KpgEjYYhFiCl19RgUn8lOC8zV/56ZXAS3+mqV4wWzicE/7vSYXs6GRO7vkYRwrwhX3Gaw==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^20.9.0"
@@ -7148,9 +7148,9 @@ eslint-plugin-node@^11.0.0:
     semver "^6.1.0"
 
 eslint-plugin-promise@^6.1.1:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-6.4.0.tgz#54926d53c79541efe9cea6ac1d823a58bbed1106"
-  integrity sha512-/KWWRaD3fGkVCZsdR0RU53PSthFmoHVhZl+y9+6DqeDLSikLdlUVpVEAmI6iCRR5QyOjBYBqHZV/bdv4DJ4Gtw==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-6.6.0.tgz#acd3fd7d55cead7a10f92cf698f36c0aafcd717a"
+  integrity sha512-57Zzfw8G6+Gq7axm2Pdo3gW/Rx3h9Yywgn61uE/3elTCOePEHVrn2i5CdfBwA1BLK0Q0WqctICIUSqXZW/VprQ==
 
 eslint-plugin-standard@^5.0.0:
   version "5.0.0"
