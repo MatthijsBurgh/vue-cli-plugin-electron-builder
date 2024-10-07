@@ -6,7 +6,7 @@ const fs = require('fs-extra')
 // Prevent electron-builder from installing app deps
 jest.mock('electron-builder/out/cli/install-app-deps.js')
 
-const electronVersion = process.env.ELECTRON_VERSION || 31
+const electronVersion = process.env.ELECTRON_VERSION || 32
 const electronRequirement = `${electronVersion}.0.0` // Fixed version
 
 const createProject = async (projectName, useTS, customPlugins = {}) => {

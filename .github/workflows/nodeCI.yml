@@ -14,12 +14,12 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [16]
-        electron_version: [27, 28, 29, 30, 31]
+        electron_version: [29, 30, 31, 32]
         include:
         - os: windows-latest
           node: 16
           command_prefix: ''
-          electron_version: 31
+          electron_version: 32
         - os: ubuntu-latest
           command_prefix: xvfb-run
     runs-on: ${{ matrix.os }}
@@ -68,7 +68,7 @@ jobs:
         max_attempts: 3
         command: ${{ matrix.command_prefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16 && matrix.electron_version == 31 }}
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16 && matrix.electron_version == 32 }}
       uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

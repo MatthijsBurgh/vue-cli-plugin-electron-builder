@@ -2,7 +2,7 @@ const generator = require('../generator')
 const fs = require('fs')
 jest.mock('fs')
 
-const electronVersion = process.env.ELECTRON_VERSION || 31
+const electronVersion = process.env.ELECTRON_VERSION || 32
 const electronRequirement = `^${electronVersion}.0.0`
 
 // Mock the generator api
