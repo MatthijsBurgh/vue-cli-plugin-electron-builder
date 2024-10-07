@@ -43,6 +43,7 @@ jobs:
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
+        save-always: true
     - name: Electron version
       id: electron-version
       shell: bash
