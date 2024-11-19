@@ -12208,10 +12208,15 @@ pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-playwright-core@1.41.0, playwright-core@^1.41.0:
+playwright-core@1.41.0:
   version "1.41.0"
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.41.0.tgz#dbda9c3948df28a8deae76cc90b424e47174f9d7"
   integrity sha512-UGKASUhXmvqm2Lxa1fNr8sFwAtqjpgBRr9jQ7XBI8Rn5uFiEowGUGwrruUQsVPIom4bk7Lt+oLGpXobnXzrBIw==
+
+playwright-core@^1.41.0:
+  version "1.49.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.49.0.tgz#8e69ffed3f41855b854982f3632f2922c890afcb"
+  integrity sha512-R+3KKTQF3npy5GTiKH/T+kdhoJfJojjHESR1YEWhYuEKRVfVaxH3+4+GvXE5xyCngCxhxnykk0Vlah9v8fs3jA==
 
 playwright@1.41.0:
   version "1.41.0"
