@@ -2,9 +2,6 @@ name: Node CI
 
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  FORCE_COLOR: 1
-
 jobs:
   build:
     strategy:
@@ -33,7 +30,7 @@ jobs:
       id: yarn-cache-dir
       shell: bash
       run: |
-        echo "dir=~/$(realpath -s --relative-to="${HOME}" "$(yarn cache dir)")" >> "${GITHUB_OUTPUT}"
+        echo "dir=$(yarn cache dir | sed "s|${HOME}|~|")" >> "${GITHUB_OUTPUT}"
     - name: Yarn cache restore
       if: ${{ runner.os != 'Windows' }}
       id: yarn-cache-restore
@@ -59,10 +56,13 @@ jobs:
         command: yarn install
     - name: yarn lint
       run: yarn lint
+      env:
+        FORCE_COLOR: 1
     - name: yarn test
       uses: nick-fields/retry@v3
       env:
         ELECTRON_VERSION: ${{ matrix.electron_version }}
+        FORCE_COLOR: 1
       with:
         timeout_minutes: 5
         max_attempts: 3
