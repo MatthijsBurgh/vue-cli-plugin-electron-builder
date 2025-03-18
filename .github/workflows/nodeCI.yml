@@ -10,16 +10,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        node: [16]
+        os: [ubuntu-22.04]
         electron_version: [29, 30, 31, 32]
+        node: [16]
         include:
         - os: windows-latest
-          node: 16
           command_prefix: ''
           electron_version: 32
-        - os: ubuntu-latest
+          node: 16
+        - os: ubuntu-22.04
           command_prefix: xvfb-run
+          
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
