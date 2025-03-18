@@ -2,24 +2,22 @@ name: Node CI
 
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  FORCE_COLOR: 1
-
 jobs:
   build:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        node: [16]
+        os: [ubuntu-22.04]
         electron_version: [29, 30, 31, 32]
+        node: [16]
         include:
         - os: windows-latest
-          node: 16
           command_prefix: ''
           electron_version: 32
-        - os: ubuntu-latest
+          node: 16
+        - os: ubuntu-22.04
           command_prefix: xvfb-run
+          
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -29,21 +27,21 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Get yarn cache dir
       if: ${{ runner.os != 'Windows' }}
-      id: yarn-cache
+      id: yarn-cache-dir
       shell: bash
       run: |
-        echo "dir=~/$(realpath -s --relative-to="${HOME}" "$(yarn cache dir)")" >> "${GITHUB_OUTPUT}"
-    - name: Yarn cache
+        echo "dir=$(yarn cache dir | sed "s|${HOME}|~|")" >> "${GITHUB_OUTPUT}"
+    - name: Yarn cache restore
       if: ${{ runner.os != 'Windows' }}
-      uses: actions/cache@v4
+      id: yarn-cache-restore
+      uses: actions/cache/restore@v4
       with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
         key: ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-${{ hashFiles('yarn.lock') }}
         restore-keys: |
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
-        save-always: true
     - name: Electron version
       id: electron-version
       shell: bash
@@ -58,17 +56,27 @@ jobs:
         command: yarn install
     - name: yarn lint
       run: yarn lint
+      env:
+        FORCE_COLOR: 1
     - name: yarn test
       uses: nick-fields/retry@v3
       env:
         ELECTRON_VERSION: ${{ matrix.electron_version }}
+        FORCE_COLOR: 1
       with:
         timeout_minutes: 5
         max_attempts: 3
         command: ${{ matrix.command_prefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 16 && matrix.electron_version == 32 }}
+      if: ${{ matrix.os == 'ubuntu-22.04' && matrix.node == 16 && matrix.electron_version == 32 }}
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/clover.xml
+    - name: Yarn cache save always
+      id: yarn-cache-save
+      if: ${{ always() && runner.os != 'Windows' && steps.yarn-cache-restore.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v4
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: ${{ steps.yarn-cache-restore.outputs.cache-primary-key }}
