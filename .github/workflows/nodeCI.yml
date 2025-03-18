@@ -30,21 +30,21 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Get yarn cache dir
       if: ${{ runner.os != 'Windows' }}
-      id: yarn-cache
+      id: yarn-cache-dir
       shell: bash
       run: |
         echo "dir=~/$(realpath -s --relative-to="${HOME}" "$(yarn cache dir)")" >> "${GITHUB_OUTPUT}"
-    - name: Yarn cache
+    - name: Yarn cache restore
       if: ${{ runner.os != 'Windows' }}
-      uses: actions/cache@v4
+      id: yarn-cache-restore
+      uses: actions/cache/restore@v4
       with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
         key: ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-${{ hashFiles('yarn.lock') }}
         restore-keys: |
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-electron-${{ matrix.electron_version }}-
           ${{ matrix.os }}-yarn-node-${{ matrix.node }}-
           ${{ matrix.os }}-yarn-node-
-        save-always: true
     - name: Electron version
       id: electron-version
       shell: bash
@@ -73,3 +73,10 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/clover.xml
+    - name: Yarn cache save always
+      id: yarn-cache-save
+      if: ${{ always() && runner.os != 'Windows' && steps.yarn-cache-restore.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v4
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: ${{ steps.yarn-cache-restore.outputs.cache-primary-key }}
