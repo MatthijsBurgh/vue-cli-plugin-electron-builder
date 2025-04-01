@@ -26,13 +26,13 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - name: Get yarn cache dir
-      if: ${{ runner.os != 'Windows' }}
+      if: runner.os != 'Windows'
       id: yarn-cache-dir
       shell: bash
       run: |
         echo "dir=$(yarn cache dir | sed "s|${HOME}|~|")" >> "${GITHUB_OUTPUT}"
     - name: Yarn cache restore
-      if: ${{ runner.os != 'Windows' }}
+      if: runner.os != 'Windows'
       id: yarn-cache-restore
       uses: actions/cache/restore@v4
       with:
@@ -68,14 +68,14 @@ jobs:
         max_attempts: 3
         command: ${{ matrix.command_prefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: ${{ matrix.os == 'ubuntu-22.04' && matrix.node == 16 && matrix.electron_version == 32 }}
+      if: matrix.os == 'ubuntu-22.04' && matrix.node == 16 && matrix.electron_version == 32
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/clover.xml
     - name: Yarn cache save always
       id: yarn-cache-save
-      if: ${{ always() && runner.os != 'Windows' && steps.yarn-cache-restore.outputs.cache-hit != 'true' }}
+      if: always() && runner.os != 'Windows' && steps.yarn-cache-restore.outputs.cache-hit != 'true'
       uses: actions/cache/save@v4
       with:
         path: ${{ steps.yarn-cache-dir.outputs.dir }}
