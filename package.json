@@ -41,7 +41,7 @@
     "@playwright/test": "^1.41.0",
     "@vue/cli-shared-utils": "^5.0.5",
     "chokidar": "^3.0.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.0.0",
     "electron-builder": "^24.4.0",
     "execa": "^5.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
