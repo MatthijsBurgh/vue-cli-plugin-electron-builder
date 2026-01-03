@@ -3,7 +3,6 @@ const { GITHUB_ACTIONS } = require('ci-info')
 /** @type {import('jest').Config} */
 module.exports = {
   testEnvironment: 'node',
-  preset: 'ts-jest/presets/js-with-ts',
   setupFiles: ['<rootDir>/__tests__/setup.helper.js'],
   testPathIgnorePatterns: [
     '/node_modules/',
@@ -18,15 +17,6 @@ module.exports = {
     'lib/testWithPlaywright.helper.{js,ts}',
     'lib/webpackConfig.{js,ts}'
   ],
-  transform: {
-    '^.+\\.tsx?$': ['ts-jest', {
-      tsconfig: {
-        moduleResolution: 'node',
-        allowJs: true,
-        esModuleInterop: true
-      }
-    }]
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   reporters: GITHUB_ACTIONS ? [['github-actions', { silent: false }], 'summary'] : ['default']
 }
