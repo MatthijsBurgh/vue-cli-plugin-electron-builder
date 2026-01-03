@@ -29,7 +29,7 @@ module.exports = [
         const pkg = require(path.join(process.cwd(), 'package.json'))
         // Don't show if electron version is already set
         return !pkg.devDependencies.electron
-      } catch (e) {
+      } catch {
         console.log('Unable to read package.json')
         return true
       }
@@ -45,7 +45,7 @@ module.exports = [
         const pkg = require(path.join(process.cwd(), 'package.json'))
         // Don't show if electron version is already set
         return (pkg.devDependencies['@playwright/test'])
-      } catch (e) {
+      } catch {
         console.log('Unable to read package.json')
         return false
       }

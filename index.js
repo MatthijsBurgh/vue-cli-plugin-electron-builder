@@ -150,7 +150,7 @@ module.exports = (api, options) => {
         // Build the render process with the custom args
         try {
           await api.service.run('build', vueArgs)
-        } catch (e) {
+        } catch {
           error(
             'Vue CLI build failed. Please resolve any issues with your build and try again.'
           )

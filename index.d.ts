@@ -1,4 +1,4 @@
-import { ElectronApplication } from "playwright-core"
+import { ElectronApplication } from 'playwright-core'
 import { Configuration as ElectronBuilderOptions } from 'electron-builder'
 import * as ChainableWebpackConfig from 'webpack-chain'
 
@@ -11,7 +11,7 @@ interface OptionsPlaywright {
   /** Launch server in dev mode, not in production. */
   forceDev: boolean
   /** Custom playwright launch options. These will be merged with default options. */
-  launchOptions: Object
+  launchOptions: object
   /** Set custom Vue env mode. Defaults to 'test' */
   mode: string
 }

@@ -18,13 +18,23 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn'
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-require-imports': 'off'
   },
   overrides: [
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off'
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-require-imports': 'off'
+      }
+    },
+    {
+      files: ['__tests__/**/*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-unused-vars': 'off'
       }
     }
   ]
