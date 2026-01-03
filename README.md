@@ -2,11 +2,22 @@
 
 > Easily Build Your Vue.js App For Desktop With Electron
 
+**Now with Vue 3, Webpack 5, and Modern Node.js Support!**
+
 [![Node CI](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml/badge.svg)](https://github.com/MatthijsBurgh/vue-cli-plugin-electron-builder/actions/workflows/nodeCI.yml)
 
 [![codecov](https://codecov.io/gh/MatthijsBurgh/vue-cli-plugin-electron-builder/branch/master/graph/badge.svg?token=V6OJ28JU6K)](https://codecov.io/gh/MatthijsBurgh/vue-cli-plugin-electron-builder)
 
 [![Sponsor](./docs/.vuepress/public/sponsorShield.svg)](https://github.com/sponsors/MatthijsBurgh)
+
+## Features
+
+- 🚀 **Vue 3 Support** - Full compatibility with Vue 3.x
+- 📦 **Webpack 5** - Modern build tooling with improved performance
+- 🔧 **TypeScript Ready** - First-class TypeScript support
+- 🌐 **Node.js 20-24** - Compatible with the latest LTS versions
+- ⚡ **Electron 32-34** - Support for the latest Electron releases
+- 🛠️ **Modern Standards** - Updated to follow current best practices
 
 ## Top Supporters
 
@@ -16,7 +27,7 @@
 
 ## Quick Start
 
-Open a terminal in the directory of your app created with Vue-CLI 3 or 4 (4 is recommended).
+Open a terminal in the directory of your app created with Vue-CLI 5 or later.
 
 Then, install and invoke the generator of vue-cli-plugin-electron-builder by running:
 

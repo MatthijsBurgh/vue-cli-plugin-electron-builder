@@ -1,7 +1,7 @@
 {
   "name": "@matthijsburgh/vue-cli-plugin-electron-builder",
-  "version": "3.0.2",
-  "description": "Easily Build Your Vue.js App For Desktop With Electron",
+  "version": "4.0.0",
+  "description": "Easily Build Your Vue.js App For Desktop With Electron - Now with Vue 3 and Modern Tooling",
   "main": "index.js",
   "types": "index.d.ts",
   "homepage": "https://MatthijsBurgh.github.io/vue-cli-plugin-electron-builder/",
