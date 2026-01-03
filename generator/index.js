@@ -88,14 +88,14 @@ module.exports = (api, options = {}) => {
   addScript('postinstall', 'electron-builder install-app-deps')
   addScript('postuninstall', 'electron-builder install-app-deps')
   const devDependencies = {
-    'electron-devtools-installer': '^3.1.0'
+    'electron-devtools-installer': '^3.2.0'
   }
   if (electronVersion) {
     // Use provided electron version
     devDependencies.electron = electronVersion
   }
   if (usesTS) {
-    devDependencies['@types/electron-devtools-installer'] = '^2.2.0'
+    devDependencies['@types/electron-devtools-installer'] = '^2.2.5'
   }
   const dependencies = {}
   if (options.electronBuilder.addTests) {

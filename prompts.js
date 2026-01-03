@@ -5,27 +5,22 @@ module.exports = [
     name: 'electronBuilder.electronVersion',
     type: 'list',
     message: 'Choose Electron Version',
-    default: '^32.0.0',
+    default: '^34.0.0',
     choices: [
-      {
-        name: '^29.0.0',
-        value: '^29.0.0',
-        short: '^29.0.0'
-      },
-      {
-        name: '^30.0.0',
-        value: '^30.0.0',
-        short: '^30.0.0'
-      },
-      {
-        name: '^31.0.0',
-        value: '^31.0.0',
-        short: '^31.0.0'
-      },
       {
         name: '^32.0.0',
         value: '^32.0.0',
         short: '^32.0.0'
+      },
+      {
+        name: '^33.0.0',
+        value: '^33.0.0',
+        short: '^33.0.0'
+      },
+      {
+        name: '^34.0.0',
+        value: '^34.0.0',
+        short: '^34.0.0'
       }
     ],
     when: () => {

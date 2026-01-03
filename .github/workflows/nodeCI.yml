@@ -8,15 +8,17 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        electron_version: [29, 30, 31, 32]
-        node: [16]
+        electron_version: [32, 33, 34]
+        node: [20, 22]
         include:
         - os: windows-latest
           command_prefix: ''
-          electron_version: 32
-          node: 16
+          electron_version: 34
+          node: 22
         - os: ubuntu-22.04
           command_prefix: xvfb-run
+          electron_version: 34
+          node: 24
           
     runs-on: ${{ matrix.os }}
     steps:
@@ -68,7 +70,7 @@ jobs:
         max_attempts: 3
         command: ${{ matrix.command_prefix }} yarn run test:ci
     - name: Upload coverage to Codecov
-      if: matrix.os == 'ubuntu-22.04' && matrix.node == 16 && matrix.electron_version == 32
+      if: matrix.os == 'ubuntu-22.04' && matrix.node == 22 && matrix.electron_version == 34
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
