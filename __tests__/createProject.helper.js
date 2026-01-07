@@ -13,6 +13,7 @@ const createProject = async (projectName, useTS, customPlugins = {}) => {
   // Prevent modification of import
   const preset = {
     ...defaultPreset,
+    vueVersion: '3', // Force Vue 3
     configs: {
       vue: { lintOnSave: false }
     }
@@ -54,9 +55,9 @@ const createProject = async (projectName, useTS, customPlugins = {}) => {
     .replace(
       'import { app, protocol, BrowserWindow } from \'electron\'',
       'import { app, protocol, BrowserWindow, ipcMain } from \'electron\'')
-    .replace( // ToDo: adapt to Vue2/3
-      'import installExtension, { VUEJS_DEVTOOLS } from \'electron-devtools-installer\'',
-      `import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+    .replace( // Vue 3 uses VUEJS3_DEVTOOLS
+      'import installExtension, { VUEJS3_DEVTOOLS } from \'electron-devtools-installer\'',
+      `import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'`
     )
     .replace(
@@ -91,8 +92,8 @@ import path from 'path'`
   // Have render process log __static and BASE_URL via IPC to make sure they are correct
   mainFile = mainFile
     .replace(
-      'import Vue from \'vue\'',
-      '/* global __static */\nimport Vue from \'vue\''
+      'import { createApp } from \'vue\'',
+      '/* global __static */\nimport { createApp } from \'vue\''
     )
     .replace(
       'import App from \'./App.vue\'',
